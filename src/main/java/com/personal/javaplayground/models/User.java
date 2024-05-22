@@ -8,17 +8,16 @@ public class User {
     private String displayName;
     @Id
     private String email;
-    private String password;
 
     public User() {
 
     }
 
-    public User(String displayName, String email, String password) {
+    public User(String displayName, String email) {
         this.displayName = displayName;
         this.email = email;
-        this.password = password;
     }
+
 
     public String getDisplayName() {
         return displayName;
@@ -34,14 +33,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
 }

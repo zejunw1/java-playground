@@ -6,10 +6,6 @@ import jakarta.validation.constraints.Size;
 
 public class UserCreationRequest {
     @NotNull
-    @Size(min = 12, max = 64)
-    public String password;
-
-    @NotNull
     @Email
     public String email;
 
@@ -17,8 +13,8 @@ public class UserCreationRequest {
     @Size(min = 1, max = 64)
     public String displayName;
 
-    public UserCreationRequest(String password, String email, String displayName) {
-        this.password = password;
+    public UserCreationRequest(String email, String displayName) {
+
         this.email = email;
         this.displayName = displayName;
     }
