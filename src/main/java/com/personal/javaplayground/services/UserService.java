@@ -6,8 +6,6 @@ import com.personal.javaplayground.exceptions.RecordExistsException;
 import com.personal.javaplayground.models.User;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserService {
     private final UserRepository userRepository;
