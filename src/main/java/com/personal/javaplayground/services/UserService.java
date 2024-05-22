@@ -16,9 +16,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
 
     public User saveUser(User user) {
         if (userRepository.existsById(user.getEmail())) {
