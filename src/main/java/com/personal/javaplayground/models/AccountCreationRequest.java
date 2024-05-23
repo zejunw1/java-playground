@@ -12,5 +12,7 @@ public class AccountCreationRequest {
         this.email = email;
     }
 
+    public AccountCreationRequest() {
+    }
 
 }
