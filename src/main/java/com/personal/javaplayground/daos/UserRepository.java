@@ -1,6 +1,5 @@
 package com.personal.javaplayground.daos;
 
-import com.personal.javaplayground.models.Account;
 import com.personal.javaplayground.models.User;
 import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,9 +1,11 @@
 package com.personal.javaplayground.services;
 
 import com.personal.javaplayground.daos.AccountRepository;
+import com.personal.javaplayground.daos.TransactionHistoryRepository;
 import com.personal.javaplayground.daos.UserRepository;
 import com.personal.javaplayground.models.Account;
 import com.personal.javaplayground.models.DepositRequest;
+import com.personal.javaplayground.models.TransactionHistory;
 import com.personal.javaplayground.models.WithdrawRequest;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,12 @@ public class AccountService {
 
     private final UserRepository userRepository;
 
-    public AccountService(AccountRepository accountRepository, UserService userService, UserRepository userRepository) {
+    private final TransactionHistoryRepository transactionHistoryRepository;
+
+    public AccountService(AccountRepository accountRepository, UserService userService, UserRepository userRepository, TransactionHistoryRepository transactionHistoryRepository) {
         this.accountRepository = accountRepository;
         this.userRepository = userRepository;
+        this.transactionHistoryRepository = transactionHistoryRepository;
     }
 
     @Transactional
@@ -45,7 +50,10 @@ public class AccountService {
         var account = accountRepository.findById(depositRequest.account)
                 .orElseThrow();// Could have used a custom exception
         account.setBalance(account.getBalance() + depositRequest.amount);
-        return accountRepository.save(account);
+        var updatedAccount = accountRepository.save(account);
+        var transactionId = UUID.randomUUID().toString();
+        transactionHistoryRepository.save(new TransactionHistory(transactionId, depositRequest.account, depositRequest.amount, "DEPOSIT"));
+        return updatedAccount;
     }
 
     @Transactional
@@ -57,6 +65,8 @@ public class AccountService {
             throw new RuntimeException("Insufficient funds");// Could have used a custom exception
         }
         account.setBalance(account.getBalance() - withdrawRequest.amount);
-        return accountRepository.save(account);
+        var updatedAccount = accountRepository.save(account);
+        transactionHistoryRepository.save(new TransactionHistory(UUID.randomUUID().toString(), withdrawRequest.account, withdrawRequest.amount, "WITHDRAW"));
+        return updatedAccount;
     }
 }

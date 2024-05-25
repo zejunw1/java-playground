@@ -5,10 +5,16 @@ import jakarta.validation.constraints.NotNull;
 
 public class WithdrawRequest {
     @NotNull
-    @Email
     public String account;
 
     @NotNull
     public Double amount;
 
+    public WithdrawRequest(String account, Double amount) {
+        this.account = account;
+        this.amount = amount;
+    }
+
+    public WithdrawRequest() {
+    }
 }
