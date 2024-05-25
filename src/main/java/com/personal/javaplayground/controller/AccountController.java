@@ -1,12 +1,14 @@
 package com.personal.javaplayground.controller;
 
-import com.personal.javaplayground.models.*;
+import com.personal.javaplayground.models.Account;
+import com.personal.javaplayground.models.AccountCreationRequest;
+import com.personal.javaplayground.models.DepositRequest;
+import com.personal.javaplayground.models.WithdrawRequest;
 import com.personal.javaplayground.services.AccountService;
 import com.personal.javaplayground.services.UserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

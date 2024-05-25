@@ -6,7 +6,6 @@ import com.personal.javaplayground.daos.AccountRepository;
 import com.personal.javaplayground.daos.UserRepository;
 import com.personal.javaplayground.models.Account;
 import com.personal.javaplayground.models.AccountCreationRequest;
-import com.personal.javaplayground.models.GetAccountRequest;
 import com.personal.javaplayground.models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,6 @@ import org.springframework.http.MediaType;
 import java.util.Objects;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -67,7 +65,7 @@ class AccountControllerTest {
     }
 
     @Test
-    void shouldReturnAccountBalance() throws JsonProcessingException {
+    void shouldReturnAccountBalance() {
         var user = userRepository.save(new User("ZW", "test@mail.com"));
         var accountId = UUID.randomUUID().toString();
         var account = accountRepository.save(new Account(accountId, user.getEmail(), 100.0));

@@ -8,9 +8,7 @@ import jakarta.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "transaction_history", indexes = {
-        @Index(name = "idx_account", columnList = "account")
-})
+@Table(name = "transaction_history", indexes = {@Index(name = "idx_account", columnList = "account")})
 public class TransactionHistory {
     @Id
     private String transactionId;
