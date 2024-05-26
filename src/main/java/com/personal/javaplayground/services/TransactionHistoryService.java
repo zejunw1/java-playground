@@ -15,10 +15,6 @@ public class TransactionHistoryService {
         this.transactionHistoryRepository = transactionHistoryRepository;
     }
 
-    public void saveTransactionHistory(TransactionHistory transactionHistory) {
-        transactionHistoryRepository.save(transactionHistory);
-    }
-
     public List<TransactionHistory> getTransactionHistoryForAccount(String account) {
         return transactionHistoryRepository.findTop10ByAccountOrderByDateDesc(account);
     }

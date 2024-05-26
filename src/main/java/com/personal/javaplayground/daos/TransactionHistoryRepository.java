@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface TransactionHistoryRepository extends JpaRepository<TransactionHistory, String> {
 
-    List<TransactionHistory> findByAccount(String account);
-
     List<TransactionHistory> findTop10ByAccountOrderByDateDesc(String userId);
 
 }

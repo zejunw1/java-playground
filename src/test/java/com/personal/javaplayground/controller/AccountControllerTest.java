@@ -68,7 +68,7 @@ class AccountControllerTest {
     void shouldReturnAccountBalance() {
         var user = userRepository.save(new User("ZW", "test@mail.com"));
         var accountId = UUID.randomUUID().toString();
-        var account = accountRepository.save(new Account(accountId, user.getEmail(), 100.0));
+        accountRepository.save(new Account(accountId, user.getEmail(), 100.0));
 
         var response = restTemplate.getForEntity("http://localhost:" + port + "/api/get-account?account=" + accountId, Account.class);
 

@@ -13,7 +13,8 @@ You can directly run the application with IDE. Alternatively, you can run the ap
 This small application is using [jib](https://github.com/GoogleContainerTools/jib) as the image builder. I will provide
 more info if you are interested in using jib.
 By default, the image name is `java-playground:latest`. You can change the image name by changing the config in gradle
-build file.
+build file. The option `-Djib.dockerClient.executable=${path_to_docker}` is used to specify the path to the docker and
+might not be needed in your case.
 
 ### Run container
 

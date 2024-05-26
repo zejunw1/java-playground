@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.*;
 @AutoConfiguration
 public class AccountController {
     private final AccountService accountService;
-    private final UserService userService;
 
-    public AccountController(AccountService accountService, UserService userService) {
+    public AccountController(AccountService accountService) {
         this.accountService = accountService;
-        this.userService = userService;
     }
 
     @RequestMapping(value = "/create-account", produces = "application/json", method = RequestMethod.POST)

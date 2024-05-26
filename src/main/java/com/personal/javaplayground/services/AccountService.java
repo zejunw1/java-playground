@@ -20,7 +20,7 @@ public class AccountService {
 
     private final TransactionHistoryRepository transactionHistoryRepository;
 
-    public AccountService(AccountRepository accountRepository, UserService userService, UserRepository userRepository, TransactionHistoryRepository transactionHistoryRepository) {
+    public AccountService(AccountRepository accountRepository, UserRepository userRepository, TransactionHistoryRepository transactionHistoryRepository) {
         this.accountRepository = accountRepository;
         this.userRepository = userRepository;
         this.transactionHistoryRepository = transactionHistoryRepository;

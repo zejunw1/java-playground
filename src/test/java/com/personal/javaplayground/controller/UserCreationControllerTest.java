@@ -15,6 +15,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
+import java.util.Objects;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -94,7 +96,7 @@ class UserCreationControllerTest {
                 User.class
         );
         assertThat(response.getStatusCode().value()).isEqualTo(200);
-        assertThat(response.getBody().getEmail()).isEqualTo("test@mail.com");
+        assertThat(Objects.requireNonNull(response.getBody()).getEmail()).isEqualTo("test@mail.com");
         assertThat(response.getBody().getDisplayName()).isEqualTo("ZJ W");
     }
 
